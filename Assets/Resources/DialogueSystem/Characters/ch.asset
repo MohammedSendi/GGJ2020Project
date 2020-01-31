@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0ba65352b8997240836e3d24df40a82, type: 3}
-  m_Name: Example
+  m_Name: ch
   m_EditorClassIdentifier: 
-  characterName: 
-  expressionsNames: []
-  expressionImages: []
+  characterName: ch
+  expressionsNames:
+  - none
+  expressionImages:
+  - {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
