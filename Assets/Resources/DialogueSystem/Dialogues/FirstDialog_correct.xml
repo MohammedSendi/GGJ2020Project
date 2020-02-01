@@ -2,7 +2,7 @@
 
     <page>
         <background>none</background>
-        <name>ch</name>
+        <name>Doctor</name>
         <expression>none</expression>
         <dialogue>your choice was correct</dialogue>
     </page>
