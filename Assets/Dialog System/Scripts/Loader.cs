@@ -8,11 +8,23 @@ using TMPro;
 public class Loader : MonoBehaviour
 {
     //this is what forms a sentence
+    public bool autoStart;
+    public bool Answer;
+    public GameObject correctDialog;
+    public GameObject wrongDialog;
+    public int correctAnswer;
+
+    public string Choise1;
+    public string Choise2;
+
+    public GameObject choices;
+
     public class sentence {
         public string background;
         public string name;
         public string dialog;
         public string expression;
+
 
         public sentence(string background, string name, string expression, string dialog) {
             this.background = background;
@@ -59,9 +71,26 @@ public class Loader : MonoBehaviour
         if (dialogueStarted && Input.GetKeyDown(KeyCode.Mouse0)) {
             nextLine();
         }
-        if (!dialogueStarted && Input.GetKeyDown(KeyCode.Space)) {
+        if (!dialogueStarted && (Input.GetKeyDown(KeyCode.Space) || autoStart)) {
             startDialog();
         }
+    }
+    public void checkAnswer(int x)
+    {
+        if (x == correctAnswer)
+        {
+            GameObject.Instantiate(correctDialog);
+            GameObject.FindGameObjectWithTag("Manager").GetComponent<btnFunction>().points++;
+        }
+        else
+        {
+            GameObject.Instantiate(wrongDialog);
+            GameObject.FindGameObjectWithTag("Manager").GetComponent<btnFunction>().points--;
+
+        }
+        choices.SetActive(false);
+        UI.enabled = false;
+        Destroy(this.gameObject);
     }
     //converts xmlfiles
     private List<sentence> parseFile() {
@@ -120,9 +149,24 @@ public class Loader : MonoBehaviour
             }
             else
             {
-                dialogueStarted = false;
-                //disable UI
-                UI.enabled = false;
+                
+
+                if (correctAnswer == 0){
+                    //disable UI
+                    dialogueStarted = false;
+                    UI.enabled = false;
+                    autoStart = false;
+                    //Destroy(this.gameObject);
+
+                }
+                else{
+                    //show choices
+                    choices.SetActive(true);
+                    //change button text
+
+                }
+                                
+
 
             }
         }
