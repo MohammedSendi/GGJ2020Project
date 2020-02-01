@@ -19,7 +19,7 @@ public class Loader : MonoBehaviour
 
     private GameObject temp;
 
-    public GameObject choices;
+    private GameObject choices;
 
     public class sentence {
         public string background;
@@ -64,6 +64,8 @@ public class Loader : MonoBehaviour
         characterExpression = GameObject.Find("_DialogueUI_characterImage").GetComponent<Image>();
         backgroundImage = GameObject.Find("_DialogueUI_backgroundImage").GetComponent<Image>();
         panles = GameObject.Find("_DialogueUI_Panels") ;
+        choices = GameObject.Find("_Panel");
+        choices.SetActive(false);
         
     }
 
@@ -147,17 +149,18 @@ public class Loader : MonoBehaviour
                 }
                 else{
                     //show choices
-                    //choices.SetActive(true);
-                    temp = GameObject.Instantiate(choices, UI.gameObject.transform) as GameObject;
-                    Destroy(temp.transform.GetChild(0));
-                    temp.transform.GetChild(0).GetComponent<Button>().onClick.AddListener( ()=> this.checkAnswer(1) );
-                    temp.transform.GetChild(1).GetComponent<Button>().onClick.AddListener( ()=> this.checkAnswer(2) );
+                    
+                    choices.SetActive(true);
+                    //temp = GameObject.Instantiate(choices, UI.gameObject.transform) as GameObject;
+                    //temp.transform.GetChild(0).GetComponent<Button>().onClick.AddListener( ()=> this.checkAnswer(1) );
+                    //temp.transform.GetChild(1).GetComponent<Button>().onClick.AddListener( ()=> this.checkAnswer(2) );
 
                     foreach(GameObject go in GameObject.FindObjectsOfType(typeof(GameObject)))
                     {
                         if(go.name == "BTN1")
                         {
                             go.GetComponentInChildren<Text>().text = Choise1;
+                            //go.GetComponent<Button>().onClick.AddListener( ()=> this.checkAnswer(1) );
                         }
                     }
                     foreach(GameObject go in GameObject.FindObjectsOfType(typeof(GameObject))){
@@ -182,7 +185,7 @@ public class Loader : MonoBehaviour
 
     public void checkAnswer(int x)
     {
-        Destroy(temp.gameObject);
+        //Destroy(temp.gameObject);
         if (x == correctAnswer)
         {
             GameObject.Instantiate(correctDialog);
