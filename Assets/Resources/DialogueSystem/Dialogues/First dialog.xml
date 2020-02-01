@@ -2,13 +2,13 @@
 
     <page>
         <background>none</background>
-        <name>ch</name>
+        <name>Doctor</name>
         <expression>none</expression>
         <dialogue>This is the first dialogue</dialogue>
     </page>
     <page>
         <background>none</background>
-        <name>ch</name>
+        <name>Doctor</name>
         <expression>none</expression>
         <dialogue>choose first answer</dialogue>
     </page>
