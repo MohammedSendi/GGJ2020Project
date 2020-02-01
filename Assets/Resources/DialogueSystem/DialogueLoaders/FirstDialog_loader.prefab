@@ -52,5 +52,7 @@ MonoBehaviour:
   correctAnswer: 1
   Choise1: correct
   Choise2: wrong
-  choices: {fileID: 0}
+  btn1text: {fileID: 0}
+  btn2text: {fileID: 0}
+  choices: {fileID: 1451695815587957007, guid: 371dca5d02c7f074b80aa4c3cf0d4b65, type: 3}
   documentName: First dialog
